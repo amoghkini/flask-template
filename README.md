@@ -1,1 +1,1 @@
-# flask-template
+This is a simple flask template
