@@ -1,0 +1,22 @@
+<nav>
+    <div class="left-side">
+        <a href="{{ url_for('index') }}">Portal Name</a>
+    </div>
+    <div class="right-side">
+        <ul>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            <li>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider round">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </span>
+                </label>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,225 @@
+/* Reset some default styles */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Aboreto', Arial, sans-serif;
+    /* Use the 'Roboto' font from Google Fonts */
+}
+
+/* Minimalistic global styles */
+body {
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Forms styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #000;
+    color: #ffffff;
+}
+
+input.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+button.dark-mode {
+    background-color: #444;
+}
+
+/* New style for the "Don't have an account" link */
+.bottom-link {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.bottom-link a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.bottom-link a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation bar styles */
+nav {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Light mode navbar */
+body:not(.dark-mode) nav {
+    background-color: #f0f0f0;
+}
+
+/* Dark mode navbar */
+body.dark-mode nav {
+    background-color: #000;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Dark mode link color */
+body.dark-mode nav a {
+    color: #fff;
+}
+
+/* Light mode link color */
+body:not(.dark-mode) nav a {
+    color: #000;
+}
+
+/* Change text color of the left-side navbar menu to red on mouse hover */
+.left-side a:hover {
+    color: red;
+}
+
+/* Change text color of the right-side navbar menu to red on mouse hover */
+.right-side a:hover {
+    color: red;
+}
+
+/* Dark mode switch button */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    /* Set the background color to black */
+    border-radius: 12px;
+    transition: 0.4s;
+}
+
+.slider i {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: 14px;
+}
+
+/* Sun icon styles */
+.slider .fa-sun {
+    color: #f6f6f6;
+    /* Set the color to red for the sun icon */
+    opacity: 1;
+}
+
+/* Moon icon styles */
+.slider .fa-moon {
+    color: #c0c0c0;
+    /* Set the color to dark grey for the moon icon */
+    opacity: 1;
+    /* Show moon icon by default */
+}
+
+input:checked+.slider {
+    background-color: #ffffff;
+}
+
+body.dark-mode input:checked+.slider .fa-sun {
+    opacity: 1;
+    /* Show sun icon when in dark mode */
+}
+
+body:not(.dark-mode) input:checked+.slider .fa-moon {
+    opacity: 0;
+    /* Show moon icon when in light mode */
+}
+
+/* Adjust position of elements */
+.left-side {
+    flex: 1;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+}
+
+.right-side ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.right-side li {
+    margin-left: 15px;
+}
+
+/* Apply styles to links inside right-side menu */
+.right-side a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.right-side a:hover {
+    text-decoration: none;
+}
