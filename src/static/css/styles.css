@@ -283,3 +283,13 @@ body:not(.dark-mode) input:checked+.slider .fa-moon {
 nav .navbar-nav .nav-item .nav-link:hover {
     color: red;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

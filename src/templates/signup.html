@@ -32,9 +32,10 @@
         </div>
 
         <div class="form-group">
-            <label for="mobileNumber">Mobile Number</label>
-            <input type="number" class="form-control" id="mobileNumber" name="mobileNumber" pattern="\d{10}" required>
-        </div>
+    <label for="mobileNumber">Mobile Number</label>
+    <input type="number" class="form-control" id="mobileNumber" name="mobileNumber" min="0" max="9999999999" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required>
+</div>
+
 
         <div class="form-group">
             <label for="dob">Date of Birth</label>
