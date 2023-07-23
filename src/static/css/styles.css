@@ -9,7 +9,7 @@ html {
 
 /* Minimalistic global styles */
 body {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 }
 
 .container {
@@ -94,7 +94,7 @@ nav {
 
 /* Light mode navbar */
 body:not(.dark-mode) nav {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 }
 
 /* Dark mode navbar */
@@ -222,4 +222,64 @@ body:not(.dark-mode) input:checked+.slider .fa-moon {
 
 .right-side a:hover {
     text-decoration: none;
+}
+
+/* Custom styles for the form */
+.custom-form {
+    margin-top: 20px;
+}
+
+/* Custom styles for the form labels */
+.custom-form label {
+    font-weight: bold;
+    font-size: 14px;
+    /* Adjust the label font size */
+    margin-bottom: 5px;
+}
+
+/* Custom styles for the form input fields */
+.custom-form input {
+    padding: 8px;
+    /* Adjust the input field padding */
+    margin-bottom: 10px;
+    /* Adjust the distance between fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    /* Adjust the input font size */
+}
+
+/* Custom styles for the form submit button */
+.custom-form button {
+    padding: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    /* Adjust the button font size */
+}
+
+.custom-form button:hover {
+    background-color: #cc0000;
+}
+
+/* Custom styles for the "Don't have an account" link */
+.custom-form .bottom-link {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.custom-form .bottom-link a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.custom-form .bottom-link a:hover {
+    text-decoration: underline;
+}
+
+nav .navbar-nav .nav-item .nav-link:hover {
+    color: red;
 }

@@ -31,7 +31,7 @@ def contact():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['firstName']
         password = request.form['password']
 
         if username not in users:
@@ -47,7 +47,7 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['firstName']
         password = request.form['password']
 
         if is_valid_credentials(username, password):
