@@ -290,8 +290,49 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.input:focus {
-    outline: none !important;
-    border: 1px solid red;
-    box-shadow: 0 0 10px #719ECE;
+/* Add styles for the dropdown menu */
+.navbar-nav .dropdown-menu {
+    background-color: #fff;
+    /* Set the background color for the dropdown menu in light mode */
+}
+
+body.dark-mode .navbar-nav .dropdown-menu {
+    background-color: #000000;
+    /* Set the background color for the dropdown menu in dark mode */
+}
+
+.navbar-nav .dropdown-menu a.dropdown-item {
+    color: #000;
+    /* Set the link color for the dropdown menu */
+}
+
+body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item {
+    color: #fff;
+    /* Set the link color for the dropdown menu in dark mode */
+}
+
+.navbar-nav .dropdown-menu a.dropdown-item:hover {
+    color: red;
+    /* Set the link text color to red on mouse hover */
+    background-color: transparent;
+    /* Remove the background color change on hover */
+}
+
+/* Additional styles for adjusting the dropdown position */
+.navbar-nav .dropdown-menu.dropdown-menu-right {
+    right: 0;
+    /* Align the dropdown to the right */
+}
+
+@media (max-width: 991px) {
+
+    /* On smaller screens, adjust dropdown alignment */
+    .navbar-nav .dropdown-menu.dropdown-menu-right {
+        right: auto;
+        /* Reset right alignment */
+        left: 0;
+        /* Align the dropdown to the left */
+        transform: translateX(-50%);
+        /* Center the dropdown */
+    }
 }
