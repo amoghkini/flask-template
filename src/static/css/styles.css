@@ -81,7 +81,7 @@ button.dark-mode {
 }
 
 .bottom-link a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Navigation bar styles */
@@ -410,3 +410,14 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item.active {
     background: transparent;
     color: #ff0000;
 }
+
+/* Dark mode text color */
+body.dark-mode .dropdown-menu a.dropdown-item {
+    color: #fff;
+}
+
+/* Light mode text color */
+body:not(.dark-mode) .dropdown-menu a.dropdown-item {
+    color: #000000;
+}
+
