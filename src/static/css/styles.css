@@ -102,6 +102,7 @@ body.dark-mode nav {
     background-color: #000;
 }
 
+/* Set the color of navbar links to white in dark mode and black in light mode */
 nav a {
     color: #fff;
     text-decoration: none;
@@ -117,14 +118,9 @@ body:not(.dark-mode) nav a {
     color: #000;
 }
 
-/* Change text color of the left-side navbar menu to red on mouse hover */
-.left-side a:hover {
-    color: red;
-}
-
-/* Change text color of the right-side navbar menu to red on mouse hover */
-.right-side a:hover {
-    color: red;
+/* Remove the color change on mouse hover for the navbar links */
+nav a:hover {
+    color: inherit;
 }
 
 /* Dark mode switch button */
@@ -136,6 +132,15 @@ body:not(.dark-mode) nav a {
     background-color: #000;
     border-radius: 12px;
     cursor: pointer;
+}
+
+/* Set the background color of the dark mode switch button based on the theme */
+body:not(.dark-mode) .switch {
+    background-color: #fff;
+}
+
+body.dark-mode .switch {
+    background-color: #000;
 }
 
 .switch input {
@@ -294,11 +299,15 @@ input::-webkit-inner-spin-button {
 .navbar-nav .dropdown-menu {
     background-color: #fff;
     /* Set the background color for the dropdown menu in light mode */
+    border-color: #ccc;
+    /* Set the border color for the dropdown menu in light mode */
 }
 
 body.dark-mode .navbar-nav .dropdown-menu {
-    background-color: #000000;
+    background-color: #000;
     /* Set the background color for the dropdown menu in dark mode */
+    border-color: #252323;
+    /* Set the border color for the dropdown menu in dark mode */
 }
 
 .navbar-nav .dropdown-menu a.dropdown-item {
@@ -335,4 +344,69 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item {
         transform: translateX(-50%);
         /* Center the dropdown */
     }
+
+    /* Navbar toggler color in mobile mode */
+    .navbar-toggler-icon {
+        background-color: #fff;
+        /* Default background color for light mode */
+    }
+
+    .navbar-toggler:hover {
+        background-color: #fff;
+        /* Default background color for light mode */
+    }
+
+    body.dark-mode .navbar-toggler-icon {
+        background-color: #000;
+        /* Change background color for dark mode */
+    }
+
+    body.dark-mode .navbar-toggler:hover {
+        background-color: #000000;
+        /* Default background color for light mode */
+    }
+
+}
+
+/* Add the styles for the divider in dark mode */
+body.dark-mode .navbar-nav .dropdown-menu .dropdown-divider {
+    border-color: #252323;
+}
+
+/* Dark mode dropdown menu link color on hover */
+body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item:hover {
+    color: red;
+    /* Set the link text color to red on mouse hover */
+    background-color: transparent;
+    /* Remove the background color change on hover */
+}
+
+/* Dark mode dropdown menu link color on click (active state) */
+body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item:focus,
+body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item.active {
+    color: red;
+    /* Set the link text color to red on click */
+    background-color: transparent;
+    /* Remove the background color change on click */
+}
+
+
+/* toggle container */
+.custom-control-input:not(:checked)~.custom-control-label::before {
+    background-color: rgb(255, 255, 255);
+    /* Change the background color of the toggle container  when it is not checked */
+    border-color: rgb(0, 0, 0);
+    /* Change the border color of the toggle container when it is not checked */
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: rgb(0, 0, 0);
+    /* Change the color of the toggle container when it is checked */
+    border-color: rgb(255, 255, 255);
+    /* Change the border color of the toggle container when it is checked */
+}
+
+.custom-control:hover {
+    background: transparent;
+    color: #ff0000;
 }
