@@ -467,3 +467,36 @@ body:not(.dark-mode) .dropdown-menu a.dropdown-item {
     color: #ff0101;
     /* Default color for light mode */
 }
+
+/* Sticky footer styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+/* Common footer styles for both light and dark mode */
+footer {
+    background-color: #ffffff;
+    color: #000;
+    /* Text color for light mode */
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    /* Use relative positioning for both modes */
+    width: 100%;
+    clear: both;
+    /* Clear any floating elements before the footer */
+}
+
+/* Dark mode footer */
+body.dark-mode footer {
+    background-color: #000000;
+    /* Dark background color for footer */
+    color: #fff;
+    /* Text color for dark mode */
+}
