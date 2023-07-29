@@ -504,5 +504,6 @@ body.dark-mode footer {
 .error-message {
     color: red;
     font-size: 14px;
+    white-space: pre-line;  /* Preserve newlines and display on separate lines */
 }
 

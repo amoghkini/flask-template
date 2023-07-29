@@ -28,21 +28,41 @@ def about():
 def contact():
     return render_template('contact_us.html')
 
+# @app.route('/signup', methods=['GET', 'POST'])
+# def signup():
+#     if request.method == 'POST':
+#         username = request.form['firstName']
+#         password = request.form['password']
+
+#         if username not in users:
+#             users[username] = {'password': password}
+#             session['username'] = username
+#             return redirect(url_for('index'))
+#         else:
+#             return render_template('signup.html', error='Username already taken.')
+
+#     return render_template('signup.html')
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        username = request.form['firstName']
-        password = request.form['password']
+        # Get the form data from the request
+        first_name = request.form.get('firstName')
+        # Perform backend validation
+        errors = {}
+        if len(first_name) < 5:
+            errors['firstName'] = f'First name should be at least 5 characters long \n Please provide the valid data'
 
-        if username not in users:
-            users[username] = {'password': password}
-            session['username'] = username
-            return redirect(url_for('index'))
-        else:
-            return render_template('signup.html', error='Username already taken.')
+        # If there are errors, render the template with error messages
+        if errors:
+            return render_template('signup.html', form_data=request.form, errors=errors)
 
-    return render_template('signup.html')
+        # If no errors, proceed with form submission logic
+        # ... (your form submission logic here)
+        print("Going to login page")
+        return redirect(url_for('login'))  # Redirect to a success page
 
+    return render_template('signup.html', form_data=request.form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

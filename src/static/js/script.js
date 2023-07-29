@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const confirmPasswordError = document.getElementById('confirmPasswordError');
 
         if (password !== confirmPassword) {
-            passwordError.textContent = "Password and confirm password should be same";
             confirmPasswordError.textContent = "Password and confirm password should be same";
             return false;
         } else {
