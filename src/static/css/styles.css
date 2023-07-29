@@ -333,7 +333,7 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item {
     /* Align the dropdown to the right */
 }
 
-@media (max-width: 991px) {
+@media (max-width: 99px) {
 
     /* On smaller screens, adjust dropdown alignment */
     .navbar-nav .dropdown-menu.dropdown-menu-right {
@@ -368,6 +368,15 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item {
 
 }
 
+@media (max-width: 991px) {
+
+    /* On smaller screens (mobile view), adjust the hamburger icon hover styles */
+    .navbar-toggler:hover {
+        background-color: transparent;
+        /* Set the background color to transparent on hover */
+    }
+}
+
 /* Add the styles for the divider in dark mode */
 body.dark-mode .navbar-nav .dropdown-menu .dropdown-divider {
     border-color: #252323;
@@ -393,17 +402,33 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item.active {
 
 /* toggle container */
 .custom-control-input:not(:checked)~.custom-control-label::before {
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     /* Change the background color of the toggle container  when it is not checked */
-    border-color: rgb(0, 0, 0);
+    border-color: #000000;
     /* Change the border color of the toggle container when it is not checked */
 }
 
 .custom-control-input:checked~.custom-control-label::before {
-    background-color: rgb(0, 0, 0);
+    background-color: #000000;
     /* Change the color of the toggle container when it is checked */
-    border-color: rgb(255, 255, 255);
+    border-color: #fff;
     /* Change the border color of the toggle container when it is checked */
+}
+
+/* CSS for custom-control-label text color */
+.custom-control-input:checked~.custom-control-label {
+    color: #fff;
+    /* Text color when checkbox is checked */
+
+    font-weight: normal;
+        /* Unbold the text when checkbox is not checked */
+}
+
+.custom-control-input:not(:checked)~.custom-control-label {
+    color: #000000;
+    /* Text color when checkbox is not checked */
+    font-weight: normal;
+        /* Unbold the text when checkbox is not checked */
 }
 
 .custom-control:hover {

@@ -55,5 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.classList.add('fa-eye');
             }
         });
-    });
+    }); 
 });
