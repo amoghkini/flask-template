@@ -13,7 +13,10 @@
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <div class="password-toggle">
+                <input type="password" class="form-control" id="password" name="password" required>
+                <i class="toggle-icon fa fa-eye-slash" aria-hidden="true" id="togglePassword"></i>
+            </div>
         </div>
 
         <button type="submit">Log In</button>

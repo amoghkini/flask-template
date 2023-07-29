@@ -421,3 +421,24 @@ body:not(.dark-mode) .dropdown-menu a.dropdown-item {
     color: #000000;
 }
 
+/* Position the icon inside the password field */
+.password-toggle {
+    position: relative;
+}
+
+.password-toggle input {
+    padding-right: 35px;
+    /* Leave space for the icon on the right */
+}
+
+.password-toggle .toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    /* Adjust the right position of the icon */
+    transform: translateY(-50%);
+    cursor: pointer;
+    /* Set the color of the icon based on the theme */
+    color: #ff0101;
+    /* Default color for light mode */
+}

@@ -39,4 +39,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add event listener to the dark mode switch
     darkModeSwitch.addEventListener('change', toggleDarkMode);
+
+    // Show/Hide Password functionality
+    const togglePassword = document.querySelectorAll('.toggle-icon');
+    togglePassword.forEach((icon) => {
+        icon.addEventListener('click', function () {
+            const passwordField = this.previousElementSibling;
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    });
 });
