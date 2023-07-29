@@ -55,5 +55,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.classList.add('fa-eye');
             }
         });
-    }); 
+    });
+
+    
+    // Function to check if password and confirm password match
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+        if (password !== confirmPassword) {
+            passwordError.textContent = "Password and confirm password should be same";
+            confirmPasswordError.textContent = "Password and confirm password should be same";
+            return false;
+        } else {
+            confirmPasswordError.textContent = ""; // Clear the error message
+            return true;
+        }
+    }
+
+    // Add event listener to the form submit button to validate passwords before submission
+    const signUpForm = document.querySelector('.custom-form');
+    signUpForm.addEventListener('submit', function (event) {
+        const isPasswordValid = validatePassword();
+        if (!isPasswordValid) {
+            event.preventDefault(); // Prevent form submission if passwords don't match
+        }
+    });
 });

@@ -500,3 +500,9 @@ body.dark-mode footer {
     color: #fff;
     /* Text color for dark mode */
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
