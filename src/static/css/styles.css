@@ -431,6 +431,21 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item.active {
         /* Unbold the text when checkbox is not checked */
 }
 
+.custom-control-input:checked~.custom-control-label:hover {
+    color: #ff0303;
+    /* Text color when checkbox is checked */
+
+    font-weight: normal;
+    /* Unbold the text when checkbox is not checked */
+}
+
+.custom-control-input:not(:checked)~.custom-control-label:hover {
+    color: #ff0000;
+    /* Text color when checkbox is not checked */
+    font-weight: normal;
+    /* Unbold the text when checkbox is not checked */
+}
+
 .custom-control:hover {
     background: transparent;
     color: #ff0000;
