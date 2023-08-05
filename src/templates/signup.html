@@ -8,11 +8,8 @@
     <form class="custom-form" action="{{ url_for('signup') }}" method="POST">
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" value="{{ form_data['firstName'] }}"
-                required>
-            {% if errors and errors.firstName %}
-                <small class="error-message">{{ errors.firstName }}</small>
-            {% endif %}
+            <input type="text" class="form-control" id="firstName" name="firstName" value="{{ form_data['firstName'] }}" required>
+            <small class="error-message">{% if errors and errors.firstName %} {{ errors.firstName }} {% endif %}</small>  
         </div>
 
         <div class="form-group">
@@ -33,7 +30,7 @@
                 <input type="password" class="form-control" id="password" name="password" required>
                 <i class="toggle-icon fa fa-eye-slash" aria-hidden="true" id="togglePassword"></i>
             </div>
-            <small class="error-message">{% if errors and errors.password %} {{ errors.password }} {% endif %}</small> <!-- Error message for confirm password field -->
+            <small class="error-message">{% if errors and errors.password %} {{ errors.password }} {% endif %}</small> 
         </div>
 
         <div class="form-group">
@@ -42,7 +39,7 @@
                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                 <i class="toggle-icon fa fa-eye-slash" aria-hidden="true" id="toggleConfirmPassword"></i>
             </div>
-            <small class="error-message" id="confirmPasswordError">{% if errors and errors.confirmPassword %}{{ errors.confirmPassword }}{% endif %}</small> <!-- Error message for confirm password field -->
+            <small class="error-message" id="confirmPasswordError">{% if errors and errors.confirmPassword %}{{ errors.confirmPassword }}{% endif %}</small> 
         </div>
 
 
