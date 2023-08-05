@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure secret key
@@ -70,16 +70,25 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['firstName']
+        username = request.form['email']
         password = request.form['password']
 
         if is_valid_credentials(username, password):
-            session['username'] = username
+            session['user'] = username
             return redirect(url_for('index'))
         else:
             return render_template('login.html', error='Invalid username or password.')
 
     return render_template('login.html')
+
+@app.route('/profile_picture', methods=['GET'])
+def profile_picture():
+    # Assuming you have a session variable named 'user_profile_pic' that stores the profile picture URL
+    # if 'user_profile_pic' in session:
+    #     profile_pic =  session['user_profile_pic']
+    # else:
+    #     profile_pic = url_for('static', filename='images/default_profile_pic.jpg', _external=True)
+    return send_from_directory('static', 'images/default_profile_pic.jpg')
 
 
 if __name__ == '__main__':

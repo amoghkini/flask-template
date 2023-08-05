@@ -6,28 +6,55 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link " href="#" id="navbarDropdownMenuLink" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-center"
-                    aria-labelledby="navbarDropdownMenuLink" id="dropdownMenu">
-                    <a class="dropdown-item" href="{{ url_for('about') }}">About Us</a>
-                    <a class="dropdown-item" href="{{ url_for('contact') }}">Contact Us</a>
-                    <div class="dropdown-divider"></div>
-                    <label class="dropdown-item custom-control custom-switch">
-                        &nbsp; <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
-                        <label class="custom-control-label" for="darkModeSwitch">Dark Mode</label>
-                    </label>
-                </div>
-            </li>
+            {% if session['user'] %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Nav 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Nav 2</a>
+                </li>
+                <li class="nav-item">
+                    <div class="user-info">
+                        <img src="{{ url_for('profile_picture') }}" class="profile-pic" alt="Profile Picture">
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="userMenuDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{ session['user'] }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenuDropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link " href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-center"
+                        aria-labelledby="navbarDropdownMenuLink" id="dropdownMenu">
+                        <a class="dropdown-item" href="{{ url_for('about') }}">About Us</a>
+                        <a class="dropdown-item" href="{{ url_for('contact') }}">Contact Us</a>
+                        <div class="dropdown-divider"></div>
+                        <label class="dropdown-item custom-control custom-switch">
+                            &nbsp; <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
+                            <label class="custom-control-label" for="darkModeSwitch">Dark Mode</label>
+                        </label>
+                    </div>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

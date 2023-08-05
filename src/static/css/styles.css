@@ -527,3 +527,23 @@ body.dark-mode footer {
     margin-top: 70px;
     /* You can adjust this value as needed */
 }
+
+/* Additional CSS styles */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-top: 5px;
+    /* Adjust as needed */
+}
+
+.username {
+    font-weight: bold;
+    /* Add any additional styling you want */
+}
