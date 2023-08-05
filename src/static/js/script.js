@@ -57,7 +57,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    
+    // Function to clear error messages
+    function clearErrorMessages(form) {
+        const errorMessages = form.querySelectorAll('.error-message');
+        errorMessages.forEach(message => {
+            message.textContent = "";
+        });
+    }
+
     // Function to check if password and confirm password match
     function validatePassword() {
         const password = document.getElementById('password').value;
@@ -73,12 +80,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Add event listener to the form submit button to validate passwords before submission
-    const signUpForm = document.querySelector('.custom-form');
-    signUpForm.addEventListener('submit', function (event) {
-        const isPasswordValid = validatePassword();
-        if (!isPasswordValid) {
-            event.preventDefault(); // Prevent form submission if passwords don't match
-        }
+    // Add event listener to the form submit button to clear error messages and validate passwords before submission
+    const forms = document.querySelectorAll('.custom-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function (event) {
+            // Clear existing error messages
+            clearErrorMessages(form);
+
+            // Validate passwords
+            const isPasswordValid = validatePassword();
+            if (!isPasswordValid) {
+                event.preventDefault(); // Prevent form submission if passwords don't match
+            }
+        });
     });
 });

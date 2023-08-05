@@ -53,6 +53,9 @@ def signup():
         if len(first_name) < 5:
             errors['firstName'] = f'First name should be at least 5 characters long \n Please provide the valid data'
 
+            # Assuming there's an error with confirmPassword validation
+            # errors['confirmPassword'] = "Password and confirm password should be same"
+
         # If there are errors, render the template with error messages
         if errors:
             return render_template('signup.html', form_data=request.form, errors=errors)
