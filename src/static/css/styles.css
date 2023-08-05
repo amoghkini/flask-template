@@ -547,3 +547,21 @@ body.dark-mode footer {
     font-weight: bold;
     /* Add any additional styling you want */
 }
+
+
+.vertical-divider {
+    border-left: 1px solid #ccc;
+    height: 20px; /* Adjust the height of the divider */
+    margin: 0 15px; /* Adjust the margin around the divider */
+    margin-top: 8px;
+}
+
+/* Add the necessary media query to target mobile view */
+@media (max-width: 767px) {
+
+    /* Hide the profile picture and divider in mobile view */
+    .profile-pic,
+    .vertical-divider {
+        display: none;
+    }
+}
