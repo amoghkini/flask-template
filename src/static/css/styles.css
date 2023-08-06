@@ -534,7 +534,7 @@ body.dark-mode footer {
     align-items: center;
 }
 
-.profile-pic {
+.profile-pic-nav {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -553,15 +553,81 @@ body.dark-mode footer {
     border-left: 1px solid #ccc;
     height: 20px; /* Adjust the height of the divider */
     margin: 0 15px; /* Adjust the margin around the divider */
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 /* Add the necessary media query to target mobile view */
 @media (max-width: 767px) {
 
     /* Hide the profile picture and divider in mobile view */
-    .profile-pic,
+    .profile-pic-nav,
     .vertical-divider {
         display: none;
+    }
+}
+
+.profile-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-actions a {
+    text-decoration: none;
+    color: #ff0000;
+    font-weight: none;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 5%;
+    margin-right: 30px; /* Add some space between profile pic and username */
+}
+
+.user-name {
+    font-size: 30px;
+}
+
+/* Add media query for mobile layout */
+@media (max-width: 767px) {
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-pic img {
+        margin-right: 0;
+        /* Reset margin for mobile layout */
+        margin-bottom: 10px;
+        /* Add margin below profile pic */
+    }
+
+    .user-name {
+        font-size: 24px;
+        /* Adjust font size for mobile layout */
+        margin-left: 0;
+        /* Reset margin for mobile layout */
+        text-align: center;
+        /* Center-align the username */
     }
 }

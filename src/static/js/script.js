@@ -80,6 +80,55 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    const section1Button = document.getElementById('section1Button');
+    const section2Button = document.getElementById('section2Button');
+    const section3Button = document.getElementById('section3Button');
+
+    const section1 = document.getElementById('section1');
+    const section2 = document.getElementById('section2');
+    const section3 = document.getElementById('section3');
+
+    section1Button.addEventListener('click', function () {
+        section1.style.display = 'block';
+        section2.style.display = 'none';
+        section3.style.display = 'none';
+    });
+
+    section2Button.addEventListener('click', function () {
+        section1.style.display = 'none';
+        section2.style.display = 'block';
+        section3.style.display = 'none';
+    });
+
+    section3Button.addEventListener('click', function () {
+        section1.style.display = 'none';
+        section2.style.display = 'none';
+        section3.style.display = 'block';
+    });
+
+    // Add event listeners and API request logic for each form here
+    const section1Form = document.getElementById('section1Form');
+    section1Form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        // Perform API request for Section 1
+        // ...
+    });
+
+    const section2Form = document.getElementById('section2Form');
+    section2Form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        // Perform API request for Section 2
+        // ...
+    });
+
+    const section3Form = document.getElementById('section3Form');
+    section3Form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        // Perform API request for Section 3
+        // ...
+    });
+
+    
     // Add event listener to the form submit button to clear error messages and validate passwords before submission
     const forms = document.querySelectorAll('.custom-form');
     forms.forEach(form => {

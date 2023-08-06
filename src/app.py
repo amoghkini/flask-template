@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory, jsonify
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure secret key
@@ -9,6 +9,11 @@ users = {
     'user2': {'password': 'pass456'}
 }
 
+notifications = [
+    {"id": 1, "message": "Notification 1"},
+    {"id": 2, "message": "Notification 2"},
+    # Add more notifications here
+]
 
 def is_valid_credentials(username, password):
     if username in users and users[username]['password'] == password:
@@ -75,6 +80,9 @@ def login():
 
         if is_valid_credentials(username, password):
             session['user'] = username
+            # Get notifications for this user (replace with your logic)
+            user_notifications = notifications
+            session['notifications'] = user_notifications
             return redirect(url_for('index'))
         else:
             return render_template('login.html', error='Invalid username or password.')
@@ -90,6 +98,13 @@ def profile_picture():
     #     profile_pic = url_for('static', filename='images/default_profile_pic.jpg', _external=True)
     return send_from_directory('static', 'images/default_profile_pic.jpg')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/tab_page')
+def tab_page():
+    return render_template('sample_page_with_tab.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

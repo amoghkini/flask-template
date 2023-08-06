@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>My profile page!</h1>
+
+<center>
+<div>
+    <button id="section1Button">Section 1</button>
+    <button id="section2Button">Section 2</button>
+    <button id="section3Button">Section 3</button>
+</div>
+</center>
+<div id="section1" style="display: none;">
+    <h2>Section 1</h2>
+    <form id="section1Form">
+        <!-- Form elements for Section 1 API request -->
+        <!-- Example: Input fields, buttons, etc. -->
+    </form>
+</div>
+
+<div id="section2" style="display: none;">
+    <h2>Section 2</h2>
+    <form id="section2Form">
+        <!-- Form elements for Section 2 API request -->
+        <!-- Example: Input fields, buttons, etc. -->
+    </form>
+</div>
+
+<div id="section3" style="display: none;">
+    <h2>Section 3</h2>
+    <form id="section3Form">
+        <!-- Form elements for Section 3 API request -->
+        <!-- Example: Input fields, buttons, etc. -->
+    </form>
+</div>
+
+
+{% endblock %}
