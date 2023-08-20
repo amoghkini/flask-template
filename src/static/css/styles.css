@@ -631,3 +631,19 @@ body.dark-mode footer {
         /* Center-align the username */
     }
 }
+
+.field-name {
+    font-size: 20px;
+    margin-right: 100px;
+    /* Adjust the space as needed */
+    display: inline-block;
+    min-width: 120px;
+    /* Add a minimum width to align the values */
+    text-align: left;
+    /* Align the label text to the right */
+}
+
+.field-value {
+    font-size: 19px;
+    display: inline-block;
+}

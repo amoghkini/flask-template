@@ -23,5 +23,29 @@
         </div>
         <!-- Your profile content goes here -->
     </div>
+    <br>
+    <div class="divider"></div> 
+    <br>
+    <h4>Account</h4>
+    <br>
+    <div class="row">
+        {% for key, value in profile_data.items() %}
+        <div class="col-md-6">
+            <div class="profile-field">
+                <span class="field-name">{{ key|title }}:</span>
+                <span class="field-value">{{ value }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+    <br>
+    <h4>Settings</h4>
+    <label class="dropdown-item custom-control custom-switch">
+        &nbsp; <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
+        <label class="custom-control-label" for="darkModeSwitch">Dark Mode</label>
+    </label>
+
 </div>
 {% endblock %}

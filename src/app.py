@@ -100,7 +100,11 @@ def profile_picture():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    profile_data = {"first name": "Amogh",
+                    "last name": "Kini",
+                    "email": "amogh@gmail.com",
+                    "password": "asasd"}
+    return render_template('profile.html', profile_data = profile_data)
 
 @app.route('/tab_page')
 def tab_page():
