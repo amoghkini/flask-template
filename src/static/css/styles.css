@@ -634,16 +634,15 @@ body.dark-mode footer {
 
 .field-name {
     font-size: 20px;
-    margin-right: 100px;
-    /* Adjust the space as needed */
+    margin-right: 100px; /* Adjust the space as needed */
     display: inline-block;
-    min-width: 120px;
-    /* Add a minimum width to align the values */
-    text-align: left;
-    /* Align the label text to the right */
+    min-width: 120px; /* Add a minimum width to align the values */
+    text-align: left; /* Align the label text to the right */
+    font-weight: bold; /* Make the label text bold */
 }
 
 .field-value {
     font-size: 19px;
     display: inline-block;
+    font-weight: thin; /* Remove boldness from the value text */
 }

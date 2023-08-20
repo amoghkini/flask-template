@@ -103,6 +103,7 @@ def profile():
     profile_data = {"first name": "Amogh",
                     "last name": "Kini",
                     "email": "amogh@gmail.com",
+                    "date of birth": "10 Jan 2022",
                     "password": "asasd"}
     return render_template('profile.html', profile_data = profile_data)
 

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Get the dark mode switch and store it in a variable
     const darkModeSwitch = document.getElementById('darkModeSwitch');
+    const darkModeSwitchProfile = document.getElementById('darkModeSwitchProfile');
     const navbar = document.getElementById('navbar');
 
     // Function to set the theme based on the current dark mode setting
@@ -10,11 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
             navbar.classList.remove('navbar-light');
             navbar.classList.add('navbar-dark');
             darkModeSwitch.checked = true; // Dark mode, so switch is on
+            darkModeSwitchProfile.checked = true; // Dark mode, so switch is on for profile page
         } else {
             // Set light mode theme
             navbar.classList.remove('navbar-dark');
             navbar.classList.add('navbar-light');
             darkModeSwitch.checked = false; // Light mode, so switch is off
+            darkModeSwitchProfile.checked = false; // Light mode, so switch is off for profile page
         }
     }
 
@@ -25,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Save user's preference to local storage
         localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        localStorage.setItem('darkModeProfile', document.body.classList.contains('dark-mode'));
     }
 
     // Check if the user has previously selected dark mode
@@ -39,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add event listener to the dark mode switch
     darkModeSwitch.addEventListener('change', toggleDarkMode);
+    darkModeSwitchProfile.addEventListener('change', toggleDarkMode);
 
     // Show/Hide Password functionality
     const togglePassword = document.querySelectorAll('.toggle-icon');
