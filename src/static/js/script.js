@@ -42,15 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get the dark mode switch for the profile page and store it in a variable
     const profileDarkModeSwitch = document.getElementById('profileDarkModeSwitch');
-    const profileDarkModeLabel = document.querySelector('.field-name'); // Label for dark mode toggle
 
     // Function to toggle dark mode on the profile page
     function toggleProfileDarkMode() {
         document.body.classList.toggle('dark-mode');
         setTheme();
-
-        // Update the label text based on the dark mode state
-        profileDarkModeLabel.textContent = document.body.classList.contains('dark-mode') ? 'Dark Mode' : 'Light Mode';
 
         // Save user's preference to local storage
         localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
