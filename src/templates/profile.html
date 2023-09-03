@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
 
@@ -24,11 +24,11 @@
         <!-- Your profile content goes here -->
     </div>
     <br>
-    <div class="divider"></div> 
+    <div class="divider"></div>
     <br>
     <h4>Account</h4>
 
-    <div class="row">
+    <div class="row ">
         {% for key, value in profile_data.items() %}
         <div class="col-md-6">
             <div class="profile-field">
@@ -40,17 +40,15 @@
     </div>
 
     <br><br><br>
-    <div class="profile-actions">
-        <h4>Settings</h4>
 
-        <label class="custom-control custom-switch">
-            &nbsp; <input type="checkbox" class="custom-control-input" id="darkModeSwitchProfile">
-            <label class="custom-control-label" for="darkModeSwitchProfile">
-                Dark Mode
-            </label>
+    <h4>Settings</h4>
+    <div class="profile-field">
+        <span class="field-name">Dark Mode</span>
+        <label class="custom-control custom-switch field-value">
+            <input type="checkbox" class="custom-control-input" id="profileDarkModeSwitch">
+            <label class="custom-control-label" for="profileDarkModeSwitch"></label>
         </label>
     </div>
-
 
 </div>
 {% endblock %}

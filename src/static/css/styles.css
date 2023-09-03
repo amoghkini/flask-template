@@ -421,14 +421,14 @@ body.dark-mode .navbar-nav .dropdown-menu a.dropdown-item.active {
     /* Text color when checkbox is checked */
 
     font-weight: normal;
-        /* Unbold the text when checkbox is not checked */
+    /* Unbold the text when checkbox is not checked */
 }
 
 .custom-control-input:not(:checked)~.custom-control-label {
     color: #000000;
     /* Text color when checkbox is not checked */
     font-weight: normal;
-        /* Unbold the text when checkbox is not checked */
+    /* Unbold the text when checkbox is not checked */
 }
 
 .custom-control-input:checked~.custom-control-label:hover {
@@ -633,7 +633,7 @@ body.dark-mode footer {
 }
 
 .field-name {
-    font-size: 20px;
+    font-size: 19px;
     margin-right: 100px; /* Adjust the space as needed */
     display: inline-block;
     min-width: 120px; /* Add a minimum width to align the values */
