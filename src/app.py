@@ -33,21 +33,6 @@ def about():
 def contact():
     return render_template('contact_us.html')
 
-# @app.route('/signup', methods=['GET', 'POST'])
-# def signup():
-#     if request.method == 'POST':
-#         username = request.form['firstName']
-#         password = request.form['password']
-
-#         if username not in users:
-#             users[username] = {'password': password}
-#             session['username'] = username
-#             return redirect(url_for('index'))
-#         else:
-#             return render_template('signup.html', error='Username already taken.')
-
-#     return render_template('signup.html')
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -91,11 +76,6 @@ def login():
 
 @app.route('/profile_picture', methods=['GET'])
 def profile_picture():
-    # Assuming you have a session variable named 'user_profile_pic' that stores the profile picture URL
-    # if 'user_profile_pic' in session:
-    #     profile_pic =  session['user_profile_pic']
-    # else:
-    #     profile_pic = url_for('static', filename='images/default_profile_pic.jpg', _external=True)
     return send_from_directory('static', 'images/default_profile_pic.jpg')
 
 @app.route('/profile')
@@ -104,6 +84,7 @@ def profile():
                     "last name": "Kini",
                     "email": "amogh@gmail.com",
                     "date of birth": "10 Jan 2022",
+                    "last_login": "10 Aug 2023 02:30",
                     "password": "asasd"}
     return render_template('profile.html', profile_data = profile_data)
 

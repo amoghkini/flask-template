@@ -8,6 +8,7 @@
     <div class="profile-header">
         <h4>Profile</h4>
         <div class="profile-actions">
+            <a href="{{ url_for('tab_page') }}">Notification Manager</a> &nbsp;
             <a href="{{ url_for('tab_page') }}">Password & Security</a>
         </div>
     </div>
@@ -17,8 +18,10 @@
             <div class="profile-pic">
                 <img src="{{ url_for('profile_picture') }}" alt="Profile Picture">
             </div>
-            <div class="user-name">
-                {{ session['user'] }}
+            <div class="user-info">
+                <div class="user-name">
+                    {{ session['user'] }}
+                </div>
             </div>
         </div>
         <!-- Your profile content goes here -->
