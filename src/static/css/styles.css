@@ -43,7 +43,7 @@ input {
 
 button {
     padding: 10px;
-    background-color: #ff0000;
+    background-color: #cc0000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -76,7 +76,7 @@ button.dark-mode {
 }
 
 .bottom-link a {
-    color: #f32128;
+    color: #cc0000;
     text-decoration: none;
 }
 

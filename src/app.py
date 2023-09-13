@@ -92,5 +92,15 @@ def profile():
 def tab_page():
     return render_template('sample_page_with_tab.html')
 
+
+@app.route('/account')
+def account():
+    profile_data = {"first_name": "Amogh",
+                    "last name": "Kini",
+                    "email": "amogh@gmail.com",
+                    "date of birth": "10 Jan 2022",
+                    "last_login": "10 Aug 2023 02:30",
+                    "password": "asasd"}
+    return render_template('account.html', form_data=profile_data)
 if __name__ == '__main__':
     app.run(debug=True)
