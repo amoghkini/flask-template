@@ -92,6 +92,11 @@ def profile():
 def tab_page():
     return render_template('sample_page_with_tab.html')
 
+@app.route('/change_password', methods=["GET", "POST"])
+def change_password():
+    if request.method == "POST":
+        print("Change password")
+    return render_template('change_password.html')
 
 @app.route('/account')
 def account():

@@ -82,6 +82,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Add event listener to the "Reset" button
+    const resetButton = document.getElementById('resetButton');
+    if (resetButton) {
+        resetButton.addEventListener('click', function () {
+            // Reset the form by accessing it through the parent form element
+            const form = this.closest('form');
+            if (form) {
+                form.reset();
+            }
+        });
+    }
+    
     // Function to check if password and confirm password match
     function validatePassword() {
         const password = document.getElementById('password').value;
@@ -160,5 +172,5 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-    
+
 });

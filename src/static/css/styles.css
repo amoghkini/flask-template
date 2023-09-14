@@ -646,3 +646,27 @@ body.dark-mode footer {
     display: inline-block;
     font-weight: thin; /* Remove boldness from the value text */
 }
+
+/* Add these styles to position the buttons next to each other */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    /* Adjust the margin as needed */
+}
+
+/* Style for the "Change Password" button */
+.button-container button[type="submit"] {
+    flex: 1;
+    /* Distribute available space evenly */
+    margin-right: 5px;
+    /* Add space between the buttons */
+}
+
+/* Style for the "Reset" button */
+.button-container button[type="reset"] {
+    flex: 1;
+    /* Distribute available space evenly */
+    margin-left: 5px;
+    /* Add space between the buttons */
+}
