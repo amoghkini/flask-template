@@ -18,10 +18,11 @@ body {
     padding: 20px;
 }
 
-h1 {
+h1, h2, h3 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 
 /* Forms styles */
 form {
@@ -669,4 +670,71 @@ body.dark-mode footer {
     /* Distribute available space evenly */
     margin-left: 5px;
     /* Add space between the buttons */
+}
+
+/* Dark mode dropdown menu background color */
+body.dark-mode .custom-form select {
+    background-color: #000;
+    color: #fff; /* Text color in dark mode */
+}
+
+/* Light mode dropdown menu background color */
+body:not(.dark-mode) .custom-form select {
+    background-color: #fff;
+    color: #000;
+    /* Text color in light mode */
+}
+
+/* Change the color of the dropdown arrow in dark mode */
+body.dark-mode .custom-form select::-ms-expand {
+    color: #fff; /* Arrow color in dark mode */
+}
+
+/* Change the color of the dropdown arrow in light mode */
+body:not(.dark-mode) .custom-form select::-ms-expand {
+    color: #000; /* Arrow color in light mode */
+}
+
+/* Style for the hover effect on dropdown options */
+body.dark-mode .custom-form select:hover {
+    background-color: #111; /* Darker background color on hover in dark mode */
+}
+
+body:not(.dark-mode) .custom-form select:hover {
+    background-color: #f8f9fa;
+    /* Lighter background color on hover in light mode */
+}
+
+/* Change the color of dropdown options in dark mode */
+body.dark-mode .custom-form select option {
+    background-color: #000;
+    color: #fff; /* Option text color in dark mode */
+}
+
+/* Change the color of dropdown options in light mode */
+body:not(.dark-mode) .custom-form select option {
+    background-color: #fff;
+    color: #000; /* Option text color in light mode */
+    
+}
+
+
+/* Input field styles for dark mode */
+body.dark-mode .custom-form input,
+body.dark-mode .custom-form select {
+    background-color: #000;
+    /* Black background color in dark mode */
+    color: #fff;
+    /* White text color in dark mode */
+}
+
+
+/* Change the color of the calendar icon in dark mode to white */
+body.dark-mode .dropdown-menu a.dropdown-item i.fa-calendar {
+    color: white !important;
+}
+
+/* Change the color of the calendar icon in dark mode */
+body.dark-mode .custom-form input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Invert the icon color in dark mode */
 }

@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>Profile</h1>
+    <h2>Profile</h2>
     <form class="custom-form" action="{{ url_for('signup') }}" method="POST">
         <div class="form-group">
             <label for="firstName">First Name</label>
@@ -56,6 +56,13 @@
             <small class="error-message">{% if errors and errors.lastName %} {{ errors.lastName }} {% endif %}</small>
         </div>
 
+        <div class="form-group">
+            <label for="dropdown">Gender:</label>
+            <select id="dropdown" name="dropdown" class="form-control" data-page="Gender">
+                <!-- Options will be added here dynamically -->
+            </select>
+        </div>
+        
         <button type="submit">Submit</button>
     </form>
 </div>

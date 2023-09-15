@@ -106,6 +106,22 @@ def account():
                     "date of birth": "10 Jan 2022",
                     "last_login": "10 Aug 2023 02:30",
                     "password": "asasd"}
+    
     return render_template('account.html', form_data=profile_data)
+
+
+dropdown_values = {
+    'page1': ["Value 1", "Value 2", "Value 3"],
+    'Gender': ["Male", "Female"],
+}
+
+
+@app.route('/get_dropdown_data/<page>', methods=['GET'])
+def get_dropdown_data(page):
+    # Fetch the values for the specified page
+    data = dropdown_values.get(page, [])
+    return jsonify(data)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
