@@ -1,62 +1,132 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Get the dark mode switch for the navbar and store it in a variable
-    const darkModeSwitch = document.getElementById('darkModeSwitch');
-    const navbar = document.getElementById('navbar');
-
-    // Function to set the theme based on the current dark mode setting
+    // Function to set the theme based on the user's preference
     function setTheme() {
-        if (document.body.classList.contains('dark-mode')) {
-            // Set dark mode theme for the navbar
-            navbar.classList.remove('navbar-light');
-            navbar.classList.add('navbar-dark');
-            darkModeSwitch.checked = true; // Dark mode, so switch is on
+        const isDarkModeEnabled = document.body.classList.contains('dark-mode');
+        if (isDarkModeEnabled) {
+            document.documentElement.setAttribute('data-theme', 'dark');
         } else {
-            // Set light mode theme for the navbar
-            navbar.classList.remove('navbar-dark');
-            navbar.classList.add('navbar-light');
-            darkModeSwitch.checked = false; // Light mode, so switch is off
+            document.documentElement.setAttribute('data-theme', 'light');
         }
     }
 
-    // Function to toggle dark mode on or off
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        setTheme();
-
-        // Save user's preference to local storage
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    // Function to save the dark mode status to the backend
+    function saveDarkModeStatus(isDarkModeEnabled) {
+        fetch('/api/set-dark-mode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ darkMode: isDarkModeEnabled }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Dark mode status saved to the backend:', data);
+            })
+            .catch(error => {
+                console.error('Error saving dark mode status:', error);
+            });
     }
 
-    // Check if the user has previously selected dark mode
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    // Function to check the dark mode status from the backend and update the button state
+    function checkDarkModeStatus() {
+        // Fetch the dark mode status from the backend
+        fetch('/api/get-dark-mode')
+            .then(response => response.json())
+            .then(data => {
+                const isDarkModeEnabled = data.darkMode;
+                const profileDarkModeSwitch = document.getElementById('profileDarkModeSwitch');
 
-    // Set initial dark mode based on user's previous selection
-    if (isDarkMode) {
-        toggleDarkMode();
-    } else {
-        setTheme(); // Set theme based on current dark mode setting
+                if (profileDarkModeSwitch) {
+                    // Update the dark mode switch state on the profile page
+                    profileDarkModeSwitch.checked = isDarkModeEnabled;
+                    // Set the theme based on the current dark mode setting
+                    if (isDarkModeEnabled) {
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                    }
+                    setTheme();
+                }
+            })
+            .catch(error => {
+                console.error('Error checking dark mode status:', error);
+            });
     }
-
-    // Add event listener to the dark mode switch on the navbar
-    darkModeSwitch.addEventListener('change', toggleDarkMode);
-
-    // Get the dark mode switch for the profile page and store it in a variable
-    const profileDarkModeSwitch = document.getElementById('profileDarkModeSwitch');
 
     // Function to toggle dark mode on the profile page
     function toggleProfileDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        setTheme();
+        const isProfileDarkMode = document.body.classList.contains('dark-mode'); // Check if profile page is in dark mode
+        document.body.classList.toggle('dark-mode'); // Toggle dark mode
+        setTheme(); // Set theme based on the current dark mode setting
 
         // Save user's preference to local storage
         localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+
+        // Save the dark mode status to the backend
+        saveDarkModeStatus(document.body.classList.contains('dark-mode'));
+
+        // Update the dark mode switch state on the profile page
+        if (profileDarkModeSwitch) {
+            profileDarkModeSwitch.checked = !isProfileDarkMode; // Toggle the switch
+        }
     }
+
+    // Get the dark mode switch for the profile page and store it in a variable
+    const profileDarkModeSwitch = document.getElementById('profileDarkModeSwitch');
 
     // Add event listener to the dark mode switch on the profile page
     if (profileDarkModeSwitch) {
         profileDarkModeSwitch.addEventListener('change', toggleProfileDarkMode);
     }
 
+    // Add event listener to the global dark mode switch
+    const globalDarkModeSwitch = document.getElementById('globalDarkModeSwitch');
+    if (globalDarkModeSwitch) {
+        globalDarkModeSwitch.addEventListener('change', toggleGlobalDarkMode);
+    }
+
+    // Function to toggle global dark mode
+    function toggleGlobalDarkMode() {
+        const isGlobalDarkMode = document.body.classList.contains('dark-mode'); // Check if the whole site is in dark mode
+        document.body.classList.toggle('dark-mode'); // Toggle dark mode
+        setTheme(); // Set theme based on the current dark mode setting
+
+        // Save user's preference to local storage
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+
+        // Save the dark mode status to the backend
+        saveDarkModeStatus(document.body.classList.contains('dark-mode'));
+
+        // Update the dark mode switch state on the profile page
+        if (profileDarkModeSwitch) {
+            profileDarkModeSwitch.checked = !isGlobalDarkMode; // Toggle the switch
+        }
+    }
+
+    // Function to set the initial theme based on user preference stored in local storage
+    function setInitialTheme() {
+        const isDarkModeEnabled = JSON.parse(localStorage.getItem('darkMode'));
+        if (isDarkModeEnabled) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+        setTheme();
+    }
+
+    // Call the function to set the initial theme
+    setInitialTheme();
+
+    console.log("Amogh is here")
+    // Check if the current page is the profile page
+    if (window.location.pathname === '/profile') {
+        // Call the function to check and update the dark mode status only when on the profile page
+        checkDarkModeStatus();
+    }
+
+
+
+    
     // Show/Hide Password functionality
     const togglePassword = document.querySelectorAll('.toggle-icon');
     togglePassword.forEach((icon) => {
@@ -174,3 +244,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+

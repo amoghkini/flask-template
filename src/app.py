@@ -122,13 +122,13 @@ def get_dropdown_data(page):
     data = dropdown_values.get(page, [])
     return jsonify(data)
 
-class Notification:
-    def __init__(self, message, is_read=False):
-        self.message = message
-        self.is_read = is_read
+# class Notification:
+#     def __init__(self, message, is_read=False):
+#         self.message = message
+#         self.is_read = is_read
         
 
-notifications = []  # Initialize an empty list to store notifications
+# notifications = []  # Initialize an empty list to store notifications
 
 
 class Notification:
@@ -154,6 +154,7 @@ notifications = [
                  'Check out our latest article on web development trends.', '2023-09-12 11:30:00', False)
 ]
 
+
 @app.route('/add_notification/<message>')
 def add_notification(message):
     notification = Notification(message)
@@ -163,7 +164,10 @@ def add_notification(message):
 
 @app.route('/get_notifications')
 def get_notifications():
+    print("Amogh is here")
     unread_notifications = [n.__dict__ for n in notifications if not n.is_read]
+    print("Unread notifcations", unread_notifications)
+    print(type(unread_notifications[0]))
     return jsonify({"notifications": unread_notifications})
 
 
@@ -173,6 +177,27 @@ def mark_notifications_as_read():
         notification.is_read = True
     return jsonify({"message": "All notifications marked as read"})
 
+
+
+# Simulate a variable to store the dark mode status
+dark_mode_status = False
+
+
+@app.route('/api/get-dark-mode', methods=['GET'])
+def get_dark_mode():
+    global dark_mode_status
+    return jsonify({'darkMode': dark_mode_status})
+
+
+@app.route('/api/set-dark-mode', methods=['POST'])
+def set_dark_mode():
+    global dark_mode_status
+    data = request.get_json()
+    if 'darkMode' in data:
+        dark_mode_status = data['darkMode']
+        return jsonify({'message': 'Dark mode status updated successfully'})
+    else:
+        return jsonify({'error': 'Dark mode status not provided in the request'})
 
 if __name__ == '__main__':
     app.run(debug=True)
