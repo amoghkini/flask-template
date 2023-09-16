@@ -738,3 +738,10 @@ body.dark-mode .dropdown-menu a.dropdown-item i.fa-calendar {
 body.dark-mode .custom-form input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1); /* Invert the icon color in dark mode */
 }
+
+
+.notification-badge {
+   color: red;
+   
+   
+}
