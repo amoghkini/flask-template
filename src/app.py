@@ -122,6 +122,57 @@ def get_dropdown_data(page):
     data = dropdown_values.get(page, [])
     return jsonify(data)
 
+class Notification:
+    def __init__(self, message, is_read=False):
+        self.message = message
+        self.is_read = is_read
+        
+
+notifications = []  # Initialize an empty list to store notifications
+
+
+class Notification:
+    def __init__(self, id, title, message, timestamp, read):
+        self.id = id
+        self.title = title
+        self.message = message
+        self.timestamp = timestamp
+        self.is_read = read
+
+
+# Sample hardcoded notification data as a list of Notification objects
+notifications = [
+    Notification(1, 'New Message', 'You have received a new message from John Doe.',
+                 '2023-09-16 10:30:00', False),
+    Notification(2, 'Friend Request', 'You have a new friend request from Jane Smith.',
+                 '2023-09-15 14:45:00', True),
+    Notification(3, 'Event Reminder', 'Don\'t forget about the team meeting today at 3:00 PM.',
+                 '2023-09-14 16:00:00', False),
+    Notification(4, 'Payment Received',
+                 'Your payment of $100 has been received successfully.', '2023-09-13 09:15:00', True),
+    Notification(5, 'New Article Published',
+                 'Check out our latest article on web development trends.', '2023-09-12 11:30:00', False)
+]
+
+@app.route('/add_notification/<message>')
+def add_notification(message):
+    notification = Notification(message)
+    notifications.append(notification)
+    return jsonify({"message": "Notification added successfully"})
+
+
+@app.route('/get_notifications')
+def get_notifications():
+    unread_notifications = [n.__dict__ for n in notifications if not n.is_read]
+    return jsonify({"notifications": unread_notifications})
+
+
+@app.route('/mark_notifications_as_read')
+def mark_notifications_as_read():
+    for notification in notifications:
+        notification.is_read = True
+    return jsonify({"message": "All notifications marked as read"})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
