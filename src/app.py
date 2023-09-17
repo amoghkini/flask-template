@@ -111,7 +111,7 @@ def account():
 
 
 dropdown_values = {
-    'page1': ["Value 1", "Value 2", "Value 3"],
+    'TestDropdown': ["Value 1", "Value 2", "Value 3"],
     'Gender': ["Male", "Female"],
 }
 
@@ -164,9 +164,7 @@ def add_notification(message):
 
 @app.route('/get_notifications')
 def get_notifications():
-    print("Amogh is here")
     unread_notifications = [n.__dict__ for n in notifications if not n.is_read]
-    print("Unread notifcations", unread_notifications)
     return jsonify({"notifications": unread_notifications})
 
 

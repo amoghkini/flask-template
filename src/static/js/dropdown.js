@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Get a reference to the dropdown element
-    const dropdown = document.getElementById('dropdown');
+    // Get all elements with the class "dynamic-dropdown"
+    const dropdowns = document.querySelectorAll('.dynamic-dropdown');
 
-    // Check if the 'dropdown' element exists in the DOM
-    if (dropdown) {
+    // Iterate over each dropdown
+    dropdowns.forEach(dropdown => {
         // Get the page name from the data attribute
         const page = dropdown.getAttribute('data-page');
 
@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }
+    });
 });
