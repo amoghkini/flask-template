@@ -164,7 +164,11 @@ def add_notification(message):
 
 @app.route('/get_notifications')
 def get_notifications():
-    unread_notifications = [n.__dict__ for n in notifications if not n.is_read]
+    if not session.get("user"):
+        unread_notifications = []
+    else:
+        unread_notifications = [n.__dict__ for n in notifications if not n.is_read]
+    print("Unread notifications", unread_notifications)
     return jsonify({"notifications": unread_notifications})
 
 
