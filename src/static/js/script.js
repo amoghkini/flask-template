@@ -117,13 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Call the function to set the initial theme
     setInitialTheme();
 
-    console.log("Amogh is here")
     // Check if the current page is the profile page
-    if (window.location.pathname === '/profile') {
-        // Call the function to check and update the dark mode status only when on the profile page
+    if (window.location.pathname === '/profile' || window.location.pathname === '/') {
+        // Call the function to check and update the dark mode status when on the profile page or the root URL
         checkDarkModeStatus();
     }
-
 
 
     

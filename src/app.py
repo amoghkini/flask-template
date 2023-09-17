@@ -66,8 +66,8 @@ def login():
         if is_valid_credentials(username, password):
             session['user'] = username
             # Get notifications for this user (replace with your logic)
-            user_notifications = notifications
-            session['notifications'] = user_notifications
+            # user_notifications = notifications
+            # session['notifications'] = user_notifications
             return redirect(url_for('index'))
         else:
             return render_template('login.html', error='Invalid username or password.')
@@ -167,7 +167,6 @@ def get_notifications():
     print("Amogh is here")
     unread_notifications = [n.__dict__ for n in notifications if not n.is_read]
     print("Unread notifcations", unread_notifications)
-    print(type(unread_notifications[0]))
     return jsonify({"notifications": unread_notifications})
 
 
@@ -186,6 +185,7 @@ dark_mode_status = False
 @app.route('/api/get-dark-mode', methods=['GET'])
 def get_dark_mode():
     global dark_mode_status
+    print("Dark mode statys", dark_mode_status)
     return jsonify({'darkMode': dark_mode_status})
 
 
