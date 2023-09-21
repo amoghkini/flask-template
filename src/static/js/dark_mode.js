@@ -79,30 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
         profileDarkModeSwitch.addEventListener('change', toggleProfileDarkMode);
     }
 
-    // Add event listener to the global dark mode switch
-    const globalDarkModeSwitch = document.getElementById('globalDarkModeSwitch');
-    if (globalDarkModeSwitch) {
-        globalDarkModeSwitch.addEventListener('change', toggleGlobalDarkMode);
-    }
-
-    // Function to toggle global dark mode
-    function toggleGlobalDarkMode() {
-        const isGlobalDarkMode = document.body.classList.contains('dark-mode'); // Check if the whole site is in dark mode
-        document.body.classList.toggle('dark-mode'); // Toggle dark mode
-        setTheme(); // Set theme based on the current dark mode setting
-
-        // Save user's preference to local storage
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-
-        // Save the dark mode status to the backend
-        saveDarkModeStatus(document.body.classList.contains('dark-mode'));
-
-        // Update the dark mode switch state on the profile page
-        if (profileDarkModeSwitch) {
-            profileDarkModeSwitch.checked = !isGlobalDarkMode; // Toggle the switch
-        }
-    }
-
     // Function to set the initial theme based on user preference stored in local storage
     function setInitialTheme() {
         const isDarkModeEnabled = JSON.parse(localStorage.getItem('darkMode'));
