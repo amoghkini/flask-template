@@ -16,7 +16,8 @@
 
 <body>
     {% include 'navbar.html' %}
-
+    <input type="hidden" id="isLoggedIn" value="{{ 'true' if session['user'] else 'false' }}">
+    
     <div class="content">
         {% block content %}{% endblock %}
     </div>
