@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
     setInitialTheme();
 
     // Check if the current page is the profile page
-    if (window.location.pathname === '/profile' || window.location.pathname === '/') {
-        // Call the function to check and update the dark mode status when on the profile page or the root URL
-        checkDarkModeStatus();
-    }
-
+    // if (window.location.pathname === '/profile' || window.location.pathname === '/') {
+    //     // Call the function to check and update the dark mode status when on the profile page or the root URL
+    //     checkDarkModeStatus();
+    // }
+    checkDarkModeStatus();
 
 });
 
