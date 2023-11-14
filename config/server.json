@@ -1,0 +1,11 @@
+{
+  "port": 5000,
+  "logFileDir": "../logs",
+  "env" : "dev",
+  "sessionLifetime": 30,
+  "DB_HOST" : "127.0.0.1",
+  "DB_PORT" : "5432",
+  "DB_USER" : "postgres",
+  "DB_PASSWORD" : "root",
+  "DB_SCHEMA" : "algo_trader_framework"
+}

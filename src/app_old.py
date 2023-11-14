@@ -74,15 +74,17 @@ def login():
 
     return render_template('login.html')
 
+
 @app.route('/profile_picture', methods=['GET'])
 def profile_picture():
+    print("Fetching profile pic")
     return send_from_directory('static', 'images/default_profile_pic.jpg')
 
 @app.route('/profile')
 def profile():
     profile_data = {"first name": "Amogh",
                     "last name": "Kini",
-                    "email": "amogh@gmail.com",
+                    "email": "amogh@mail.com",
                     "date of birth": "10 Jan 2022",
                     "last_login": "10 Aug 2023 02:30",
                     "password": "asasd"}
@@ -102,7 +104,7 @@ def change_password():
 def account():
     profile_data = {"first_name": "Amogh",
                     "last name": "Kini",
-                    "email": "amogh@gmail.com",
+                    "email": "amogh@mail.com",
                     "date of birth": "10 Jan 2022",
                     "last_login": "10 Aug 2023 02:30",
                     "password": "asasd"}

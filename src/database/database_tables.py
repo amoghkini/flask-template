@@ -1,0 +1,2 @@
+class DatabaseTables:
+    USERS = 'users'
