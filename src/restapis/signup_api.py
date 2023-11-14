@@ -6,7 +6,7 @@ class SignUpAPI(MethodView):
 
     def get(self):
         if g.user:
-            return redirect(url_for('dashboard_api'))
+            return redirect(url_for('index_api'))
         return render_template('signup.html', form_data=request.form, errors={})
     
     def post(self):
