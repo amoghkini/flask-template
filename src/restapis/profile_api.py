@@ -1,10 +1,12 @@
-from flask import render_template
+from flask import render_template, g, redirect, url_for
 from flask.views import MethodView
 
 
 class ProfileAPI(MethodView):
 
     def get(self):
+        if not g.user:
+            return redirect(url_for('index_api'))
         profile_data = {"first name": "Amogh",
                     "last name": "Kini",
                     "email": "amogh@mail.com",
