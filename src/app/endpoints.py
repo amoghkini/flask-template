@@ -1,12 +1,23 @@
 from flask import Flask
 
 
-from restapis import (about_us_api, contact_us_api, index_api, login_api, profile_api,profile_pic_api, signup_api, tab_page_api)
+from restapis import (
+    about_us_api,
+    charnge_password, 
+    contact_us_api, 
+    index_api, 
+    login_api, 
+    profile_api,
+    profile_pic_api, 
+    signup_api, 
+    tab_page_api
+)
 
 def register_endpoints(app: Flask) -> None:
 
     app.add_url_rule("/", view_func=index_api.IndexAPI.as_view("index_api"))
     app.add_url_rule("/about", view_func=about_us_api.AboutUsAPI.as_view("about_us_api"))
+    app.add_url_rule("/change_password", view_func=charnge_password.ChangePasswordAPI.as_view("change_password_api"))
     app.add_url_rule("/contact", view_func=contact_us_api.ContactUsAPI.as_view("contact_us_api"))
     app.add_url_rule("/login", view_func=login_api.LogInAPI.as_view("login_api"))
     app.add_url_rule("/profile", view_func=profile_api.ProfileAPI.as_view("profile_api"))
