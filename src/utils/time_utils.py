@@ -31,3 +31,11 @@ class TimeUtils:
     @staticmethod
     def convert_to_date_time_str(datetime_obj):
         return datetime_obj.strftime(TimeUtils.DATE_TIME_FORMAT)
+    
+    @staticmethod
+    def get_epoch(datetime_obj=None):
+        # This method converts given datetime_obj to epoch seconds
+        if datetime_obj == None:
+            datetime_obj = datetime.now()
+        epoch_seconds = datetime.timestamp(datetime_obj)
+        return int(epoch_seconds)  # converting double to long
