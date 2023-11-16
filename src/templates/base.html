@@ -19,7 +19,9 @@
     <input type="hidden" id="isLoggedIn" value="{{ 'true' if session['user'] else 'false' }}">
     
     <div class="content">
-        {% block content %}{% endblock %}
+        {% include 'flash.html' %}
+        {% block content %}
+        {% endblock %}
     </div>
 
     <footer>
