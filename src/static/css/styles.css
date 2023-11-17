@@ -745,3 +745,17 @@ body.dark-mode .custom-form input[type="date"]::-webkit-calendar-picker-indicato
    
    
 }
+
+/* Light mode table */
+body:not(.dark-mode) .data-table table {
+    color: #000;
+    /* Text color in light mode */
+    /* Add other table styling for light mode */
+}
+
+/* Dark mode table */
+body.dark-mode .data-table table {
+    color: #fff;
+    /* Text color in dark mode */
+    /* Add other table styling for dark mode */
+}
