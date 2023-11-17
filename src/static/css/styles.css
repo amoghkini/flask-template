@@ -759,3 +759,27 @@ body.dark-mode .data-table table {
     /* Text color in dark mode */
     /* Add other table styling for dark mode */
 }
+
+/* For light mode */
+.table {
+    color: black;
+    /* Default color for light mode */
+}
+
+/* For dark mode */
+@media (prefers-color-scheme: dark) {
+    .table {
+        color: white;
+        /* Color for text in dark mode */
+    }
+}
+
+.no-data-found {
+    text-align: center;
+    margin-top: 10px;
+    /* Adjust margin as needed */
+    font-style: italic;
+    /* Example styling */
+    color: #999;
+    /* Example color */
+}

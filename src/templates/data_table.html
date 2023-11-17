@@ -23,14 +23,13 @@
                     <!-- Add more table cells based on the data structure -->
                 </tr>
                 {% endfor %}
-                {% else %}
-                <tr>
-                    <td colspan="2">No data found</td>
-                    <!-- Adjust colspan based on the number of columns in the table -->
-                </tr>
                 {% endif %}
+                
             </tbody>
         </table>
+        {% if not data %}
+        <p class="no-data-found">No data found</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

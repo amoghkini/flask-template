@@ -14,6 +14,7 @@ def data_table():
         {'column1': 'Value 3', 'column2': 'Value 4'},
         # Add more data rows as needed
     ]
+    # data = []
     return render_template('data_table.html', data=data)
 
 if __name__ == "__main__":
