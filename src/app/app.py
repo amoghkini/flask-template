@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from flask import Flask, g, session
 from typing import Dict
 
@@ -47,13 +48,13 @@ def configure_requests(app: Flask) -> None:
     def before_request():
         session.permanent = True  # set session to use PERMANENT_SESSION_LIFETIME
         session.modified = True   # reset the session timer on every request
-        #app.permanent_session_lifetime = timedelta(minutes=60)
+        app.permanent_session_lifetime = timedelta(minutes=get_server_config().get('sessionLifetime'))
 
         g.user = None
         if 'user' in session:
             g.user = session['user']
 
-        g.secret_key = "SomeRandomSecretKeyHere"
+        g.secret_key = get_server_config().get('secretKey')
         
         g.db = get_db() # Connect to sql db
        

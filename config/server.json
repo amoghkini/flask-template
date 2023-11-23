@@ -8,5 +8,6 @@
   "DB_USER" : "postgres",
   "DB_PASSWORD" : "root",
   "DB_SCHEMA" : "flask_boilerplate",
+  "secretKey" : "SomeRandomSecretKeyHere",
   "accountActivationRequired": 0
 }
