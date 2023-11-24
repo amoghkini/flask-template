@@ -118,3 +118,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+// Function to clear local storage upon logout
+function clearLocalStorageOnLogout() {
+    console.log("About to remove data from localStorage")
+    // Clear the 'userRole' key from local storage
+    localStorage.removeItem('userRole');
+}
+
+// Function to handle logout and redirection
+function handleLogoutAndRedirect() {
+    // Perform logout actions (e.g., API call)
+    fetch('/logout')
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Logged out successfully' && data.redirect_url) {
+                clearLocalStorageOnLogout(); // Clear local storage upon successful logout
+                window.location.href = data.redirect_url; // Redirect to the specified URL
+            }
+        })
+        .catch(error => {
+            console.error('Error logging out:', error);
+        });
+}
+
+// Example usage: Call this function when the logout action is triggered
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('logoutButton').addEventListener('click', function () {
+        handleLogoutAndRedirect(); // Trigger logout and redirection
+    });
+});

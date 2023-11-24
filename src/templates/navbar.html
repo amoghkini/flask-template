@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             {% if session['user'] %}
-                <li class="nav-item">
+                <li class="nav-item" id="adminMenu">
                     <a class="nav-link" href="{{ url_for('data_table_api') }}">Data Table page</a>
                 </li>
                 <li class="nav-item">
@@ -45,7 +45,8 @@
                             <label class="custom-control-label" for="darkModeSwitch">Dark Mode</label>
                         </label> -->
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url_for('logout_api') }}">Logout</a>
+                        <!-- <a class="dropdown-item" href="{{ url_for('logout_api') }}" id="logoutButton">Logout</a> -->
+                        <a class="dropdown-item" href="#" id="logoutButton">Logout</a>
                     </div>
                 </li>
 

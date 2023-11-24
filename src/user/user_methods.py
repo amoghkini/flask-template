@@ -14,6 +14,7 @@ from database.database_tables import DatabaseTables
 from exceptions.api_exceptions import APIException
 from exceptions.user_exceptions import AuthUserError, InvalidUserDataError, UserNotFoundError, UserSignatureError
 # from messaging_engine.producer import MessagingEngineProducer
+from user.user_roles import UserRoles
 from user.user import User
 from utils.utils import Utils
 
@@ -373,3 +374,30 @@ class UserMethods:
         print("Payload", payload)
         # message = MessagingEngineProducer()
         # message.publish(payload)
+        
+    @staticmethod
+    def get_user_role(username: str):
+        user_details = UserMethods.get_user_by_username(username)
+        user_role = user_details.get('role')
+        
+        # To be implemented: Write new method named validate_role which will check if this role is allowed in the current environment
+        #If valid user role not found then set the lowest access to the user
+        if not user_role:
+            user_role = UserRoles.USER1
+        return user_details.get('role')
+    
+    @staticmethod
+    def set_user_role(username: str, new_role: str):
+        try:
+            # To be implemented: Write new method named validate_role which will check if this role is allowed in the current environment
+            
+            # To be implemented: Check if new and old role is same
+            data_to_update = {"role": new_role}
+            UserMethods.update_user_data(username, data_to_update, by='email_id')
+            return True
+        except Exception as e:
+            logging.exception("Exception occured while setting user role %s", str(e))
+            return False
+        
+        
+    
