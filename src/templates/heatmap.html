@@ -3,10 +3,32 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Heatmap</h1>
 
-<div class="heatmap-container">
-    <!-- Generate the grid of cells here dynamically using JavaScript -->
+<div class="container">
+    <h3>Heatmap</h3>
+    <form class="custom-form" id="heatmapForm">
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="startDate" name="startDate"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="40" required>
+            <small class="error-message">{% if errors and errors.startDate %} {{ errors.startDate }} {% endif %}</small>
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" class="form-control" id="endDate" name="endDate"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="40" required>
+            <small class="error-message">{% if errors and errors.endDate %} {{ errors.endDate }} {% endif %}</small>
+        </div>
+
+        <button type="submit">Generate Heatmap</button>
+    </form>
 </div>
-
+<center>
+    <div class="heatmap-container">
+        <!-- Generate the grid of cells here dynamically using JavaScript -->
+    </div>
+</center>
 {% endblock %}
