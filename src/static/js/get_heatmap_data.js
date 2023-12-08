@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
+        // Show the loading icon
+        loadingIcon.style.display = 'block';
+
         // Clear existing heatmap before adding a new one
         const existingHeatmap = document.querySelector('.heatmap-container');
         if (existingHeatmap) {
@@ -20,15 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(data => {
+                loadingIcon.style.display = 'none';
                 if (data.hasOwnProperty('error')) {
                     throw new Error(data.error);
                 }
 
-                const counts = data.date_counts.map(dateCount => dateCount.count);
-                const minCount = Math.min(...counts);
-                const maxCount = Math.max(...counts);
+                const values = data.heatmap_data.map(datevalue => datevalue.value);
+                const minvalue = Math.min(...values);
+                const maxvalue = Math.max(...values);
 
-                const weeksData = groupDataByWeek(data.date_counts);
+                const weeksData = groupDataByWeek(data.heatmap_data);
                 const maxRows = Math.max(...weeksData.map(weekData => weekData.length));
 
                 const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -53,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         const cell = document.createElement('div');
                         cell.classList.add('heatmap-cell');
                         if (i < weekData.length) {
-                            cell.style.backgroundColor = getColorForCount(weekData[i].count, minCount, maxCount);
-                            cell.addEventListener('mouseenter', () => displayValueAndDate(cell, weekData[i].count, weekData[i].date));
+                            cell.style.backgroundColor = getColorForvalue(weekData[i].value, minvalue, maxvalue);
+                            cell.addEventListener('mouseenter', () => displayValueAndDate(cell, weekData[i].value, weekData[i].date));
                         }
                         cell.addEventListener('mouseleave', () => hideValueAndDate());
                         weekColumn.appendChild(cell);
@@ -64,29 +68,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             })
             .catch(error => {
+                loadingIcon.style.display = 'none';
                 alert(error.message); // Alert with the error message
                 console.error('Error:', error);
             });
 
-        function getColorForCount(count, minCount, maxCount) {
+        function getColorForvalue(value, minvalue, maxvalue) {
             const colors = ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127'];
-            const range = maxCount - minCount;
+            const range = maxvalue - minvalue;
             const step = Math.ceil(range / colors.length);
-            const thresholds = Array.from({ length: colors.length - 1 }, (_, i) => minCount + step * (i + 1));
+            const thresholds = Array.from({ length: colors.length - 1 }, (_, i) => minvalue + step * (i + 1));
 
-            if (count === 0) return colors[0]; // Lowest count
+            if (value === 0) return colors[0]; // Lowest value
             for (let i = 0; i < thresholds.length; i++) {
-                if (count <= thresholds[i]) {
+                if (value <= thresholds[i]) {
                     return colors[i + 1];
                 }
             }
-            return colors[colors.length - 1]; // Highest count
+            return colors[colors.length - 1]; // Highest value
         }
 
-        function displayValueAndDate(cell, count, date) {
+        function displayValueAndDate(cell, value, date) {
             const tooltip = document.createElement('div');
             tooltip.classList.add('heatmap-tooltip');
-            tooltip.textContent = `Date: ${date}, Value: ${count}`;
+            tooltip.textContent = `Date: ${date}, Value: ${value}`;
             cell.appendChild(tooltip);
         }
 
@@ -98,20 +103,20 @@ document.addEventListener("DOMContentLoaded", function () {
         function groupDataByWeek(data) {
             const weeksData = [];
             let currentWeek = [];
-            data.forEach(dateCount => {
-                const dayOfWeek = new Date(dateCount.date).getDay();
+            data.forEach(datevalue => {
+                const dayOfWeek = new Date(datevalue.date).getDay();
                 if (dayOfWeek === 0 && currentWeek.length > 0) {
                     while (currentWeek.length < 7) {
-                        currentWeek.push({ date: '', count: 0 });
+                        currentWeek.push({ date: '', value: 0 });
                     }
                     weeksData.push(currentWeek);
                     currentWeek = [];
                 }
-                currentWeek.push(dateCount);
+                currentWeek.push(datevalue);
             });
             if (currentWeek.length > 0) {
                 while (currentWeek.length < 7) {
-                    currentWeek.push({ date: '', count: 0 });
+                    currentWeek.push({ date: '', value: 0 });
                 }
                 weeksData.push(currentWeek);
             }

@@ -4,26 +4,30 @@
 
 {% block content %}
 
+
 <div class="container">
     <h3>Heatmap</h3>
     <form class="custom-form" id="heatmapForm">
         <div class="form-group">
             <label for="startDate">Start Date</label>
             <input type="date" class="form-control" id="startDate" name="startDate"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength="40" required>
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength="40" required>
             <small class="error-message">{% if errors and errors.startDate %} {{ errors.startDate }} {% endif %}</small>
         </div>
-
+        
         <div class="form-group">
             <label for="endDate">End Date</label>
             <input type="date" class="form-control" id="endDate" name="endDate"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength="40" required>
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength="40" required>
             <small class="error-message">{% if errors and errors.endDate %} {{ errors.endDate }} {% endif %}</small>
         </div>
-
+        
         <button type="submit">Generate Heatmap</button>
+        <div id="loadingIcon" class="form-group" style="display: none; text-align: center; margin-bottom: 20px;">
+            <p>Fetching data...</p>
+        </div>
     </form>
 </div>
 <center>
