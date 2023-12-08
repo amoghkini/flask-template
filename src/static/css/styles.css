@@ -783,3 +783,49 @@ body.dark-mode .data-table table {
     color: #999;
     /* Example color */
 }
+
+
+/* Basic styling for heatmap container */
+.heatmap-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    /* Vertically align items */
+}
+
+/* Styling for heatmap cells */
+.heatmap-cell {
+    width: 20px;
+    /* Adjust cell size */
+    height: 20px;
+    /* Adjust cell size */
+    background-color: #eee;
+    /* Default cell color */
+    border: 1px solid #fff;
+    /* Optional: Add borders */
+}
+
+/* CSS for heatmap tooltip */
+.heatmap-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 999;
+}
+
+/* Styles for day labels */
+.day-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 10px;
+    /* Adjust as needed */
+}
+
+.day-label {
+    font-size: 18px;
+    /* Adjust as needed */
+}
