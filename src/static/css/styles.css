@@ -827,3 +827,34 @@ body.dark-mode .data-table table {
     font-size: 13px;
     /* Adjust as needed */
 }
+
+/* Adjust padding on both sides of the heatmap scroll container */
+.heatmap-scroll-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    /* Add padding to create space from the screen edge */
+}
+
+/* Adjust heatmap container styles */
+.heatmap-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    /* Add some padding at the bottom */
+    padding-left: 20px;
+    /* Add padding on the left side */
+    padding-right: 20px;
+    /* Add padding on the right side */
+}
+
+/* Adjust heatmap cell size if needed */
+.heatmap-cell {
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    border: 1px solid #fff;
+}

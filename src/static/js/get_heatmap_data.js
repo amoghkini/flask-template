@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         // Show the loading icon
+        const loadingIcon = document.getElementById('loadingIcon');
         loadingIcon.style.display = 'block';
 
         // Clear existing heatmap before adding a new one
@@ -92,6 +93,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const tooltip = document.createElement('div');
             tooltip.classList.add('heatmap-tooltip');
             tooltip.textContent = `Date: ${date}, Value: ${value}`;
+
+            // Calculate mouse position relative to the viewport
+            const rect = cell.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            // Set tooltip position relative to the mouse position
+            tooltip.style.left = mouseX + 'px';
+            tooltip.style.top = mouseY + 'px';
+
             cell.appendChild(tooltip);
         }
 

@@ -17,7 +17,7 @@ class HeatmapDataAPI(MethodView):
 
         # Calculate the difference in days
         date_difference = (end_datetime - start_datetime).days
-        import time;time.sleep(10)
+        import time;time.sleep(2)
         if date_difference > 400:
             return jsonify({'error': 'The difference between start and end dates cannot be more than 400 days.'})
         time_series_data = complete_weeks_in_data(time_series_data)
